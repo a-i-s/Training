@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "All Notes";
+}
+
+@model List<Note>
+
+@foreach (var note in Model)//для каждой заметки делаем свою ссылку отображения
+{
+    var url = Url.Action("ShowNoteInfo", new{id = note.Id});
+    
+    <div>
+        <a href="@url">@note.Title</a>
+    </div>
+}
+

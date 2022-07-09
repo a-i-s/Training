@@ -1,0 +1,32 @@
+﻿@model Note
+
+<form method="post" action="@Url.Action("UpdateNote")" enctype="multipart/form-data">
+   
+    <div>
+        <label>Тема заметки</label>
+        <input type="text" name="title" value="@Model.Title" />
+    </div>
+    <div>
+        <label>Текст заметки</label>
+        <textarea name="text">@Model.Text</textarea>
+    </div>
+    
+    
+    <div>
+        <input type="submit" value="Обновить заметку"/>
+        <input hidden type="text" name="id" value="@Model.Id"/>
+    </div>
+    
+</form>
+
+<form method="post" action="@Url.Action("DeleteNote")" enctype="multipart/form-data">
+   
+   
+    
+    <div>
+        <input type="submit" value="Удалить заметку"/>
+        <input hidden type="text" name="id" value="@Model.Id"/>
+    </div>
+    
+</form>
+

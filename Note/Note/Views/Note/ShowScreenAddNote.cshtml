@@ -1,0 +1,19 @@
+﻿@model Note
+
+<form method="post" action="@Url.Action("AddNote")" enctype="multipart/form-data">
+   
+    <div>
+        <label>Тема заметки</label>
+        <input type="text" name="title" value="" />
+    </div>
+    <div>
+        <label>Текст заметки</label>
+        <textarea name="text"></textarea>
+    </div>
+    
+    
+    <div>
+        <input type="submit" value="Добавить заметку"/>
+    </div>
+    
+</form>
