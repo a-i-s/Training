@@ -10,10 +10,8 @@ namespace Parsing
     {
         public static void Main(string[] args)
         {
-            // Получение пути к файлу https://ru.stackoverflow.com/a/743372
             // StreamReader streamReader = new StreamReader("C://Users//user//Desktop//GameDevAcademy//Введение в Unity//Parsing//Parsing//source.txt");
-            // var appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-
+            
             StreamReader streamReader = new StreamReader("source.txt");//файл нужно положить в корень проекта bin\Debug\net6.0
             
             /*while (!streamReader.EndOfStream)
@@ -117,108 +115,4 @@ namespace Parsing
 	 
 	6. Сколько ребер между точками
 	7. Ребра*/
-
-    public class LevelSettings// настройки уровня
-    {
-        public List<int> StartPositions { get; set; }
-        public List<int> FinalPositions { get; set; }
-        public int _count { get; set; }
-        public int _nodeCount { get; set; }
-        public Graph Board { get; set; }
-        public int _countEdges { get; set; }// количество ребер
-        
-        public override string ToString()// метод для форматированной печати объектов
-        {
-            string start = "";
-            foreach (var startPosition in StartPositions)
-            {
-                start = start + startPosition + ", ";
-            }
-
-            string final = "";
-            foreach (var finalPosition in FinalPositions)
-            {
-                final = final + finalPosition + ", ";
-            }
-
-            return $"LevelSettings[count - {_count}, nodeCount - {_nodeCount}, countEdges - {_countEdges}, startPositions - {start}, finalPositions - {final},\nboard - {Board}]";
-        }
-        
-    } 
-    
-    public class Graph
-    {
-        private int _nodeCound; // количество узлов
-        List<Node> Nodes = new List<Node>();
-        
-        public Graph(int nodeCound) 
-        {
-            _nodeCound = nodeCound;
-        }
-
-        public Node GetNode(int index)// получить узел по индексу 
-        {
-            for (int i = 0; i < Nodes.Count; i++)
-            {
-                if (Nodes[i].GetNumber() == index)
-                {
-                    return Nodes[i];
-                }
-            }
-            return null;
-        }
-
-        public void AddNode(Node node)// метод добавления нод (узлов)
-        {
-            Nodes.Add(node);
-        }
-        
-        public override string ToString()// метод для форматированной печати объектов
-        {
-            string result = "";
-            foreach (var node in Nodes)
-            {
-                result = result + "\n- " + node.ToString();
-            }
-           return $"Graph[nodeCount - {_nodeCound},\nNodes:{result}]";
-        }
-    }
-
-    public class Node
-    {
-        private int _number; // номер узла
-        Vector2 Position; // содержит две координаты x и y
-        List<Node> Neighbours = new List<Node>(); // список ссылок на другие ноды 
-
-        public Node(int number)
-        {
-            _number = number;
-        }
-        
-        public void SetCoordinate(Vector2 coordinate)// установить координаты
-        {
-            Position = coordinate;
-        }
-
-        public int GetNumber()// получить номер узла
-        {
-            return _number;
-        }
-
-        public void AddNeighbour(Node node)// метод связи двух узлов
-        {
-             Neighbours.Add(node);
-        }
-
-        public override string ToString()// метод для форматированной печати объектов
-        {
-            string neigbourghs = "";
-            foreach (Node neighbour in Neighbours)
-            {
-                neigbourghs = neigbourghs + neighbour._number + ", ";
-            }
-            
-            return $"Node[number - {_number}, position - {Position}, Neighbours - {neigbourghs}]";
-        }
-    }
 }
