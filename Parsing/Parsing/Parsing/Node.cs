@@ -5,13 +5,13 @@ namespace Parsing
 {
     public class Node
     {
-        private int _number; // номер узла
+        private int _index; // номер узла
         Vector2 Position; // содержит две координаты x и y
-        List<Node> Neighbours = new List<Node>(); // список ссылок на другие ноды 
+        public List<Node> Neighbours {get; set;} = new List<Node>();  // список ссылок на другие ноды 
 
-        public Node(int number)
+        public Node(int index)
         {
-            _number = number;
+            _index = index;
         }
         
         public void SetCoordinate(Vector2 coordinate)// установить координаты
@@ -19,9 +19,9 @@ namespace Parsing
             Position = coordinate;
         }
 
-        public int GetNumber()// получить номер узла
+        public int GetIndex()// получить номер узла
         {
-            return _number;
+            return _index;
         }
 
         public void AddNeighbour(Node node)// метод связи двух узлов
@@ -34,10 +34,10 @@ namespace Parsing
             string neigbourghs = "";
             foreach (Node neighbour in Neighbours)
             {
-                neigbourghs = neigbourghs + neighbour._number + ", ";
+                neigbourghs = neigbourghs + neighbour._index + ", ";
             }
             
-            return $"Node[number - {_number}, position - {Position}, Neighbours - {neigbourghs}]";
+            return $"Node[number - {_index}, position - {Position}, Neighbours - {neigbourghs}]";
         }
     }
 }
